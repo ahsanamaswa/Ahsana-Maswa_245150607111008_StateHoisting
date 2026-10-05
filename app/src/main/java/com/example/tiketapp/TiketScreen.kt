@@ -87,8 +87,8 @@ fun TicketScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         val statusColor = when {
-            status.contains("telah dipesan") -> Color(0xFF2E7D32) // hijau
-            status.contains("Nama Masih Kosong") || status.contains("harus diisi") -> Color(0xFFD32F2F) // merah
+            status.contains("telah dipesan") -> Color(0xFF2E7D32)
+            status.contains("Nama Masih Kosong") || status.contains("harus diisi") -> Color(0xFFD32F2F)
             else -> Color.Unspecified
         }
 

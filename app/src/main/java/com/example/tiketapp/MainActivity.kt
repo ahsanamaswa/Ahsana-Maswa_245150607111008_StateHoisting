@@ -34,25 +34,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TicketOrderHost(modifier: Modifier = Modifier) {
-    // === State di-hoist di Parent (MainActivity level) ===
     var namaPembeli by rememberSaveable { mutableStateOf("") }
     var jumlahTiket by rememberSaveable { mutableStateOf(1) }
     val hargaTiket = 50000
-    var status by remember { mutableStateOf("Nama Masih Kosong") }
+    var status by remember { mutableStateOf("Silakan pesan tiket") }
     var isProcessing by remember { mutableStateOf(false) }
 
-    // LaunchedEffect 1: Validasi nama secara real-time
-    LaunchedEffect(namaPembeli) {
-        if (!isProcessing) {
-            status = if (namaPembeli.isBlank()) {
-                "Nama Masih Kosong"
-            } else {
-                "Silakan pesan tiket"
-            }
-        }
-    }
-
-    // LaunchedEffect 2: Proses pemesanan selama 5 detik
     LaunchedEffect(isProcessing) {
         if (isProcessing) {
             status = "Memproses pesanan........."
